@@ -1,8 +1,8 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 60
+    "app/api/**/*.ts": {
+      "maxDuration": 35
     }
   },
   "routes": [
