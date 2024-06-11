@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import Header from "../components/Header";
 import { scrapper } from "@/lib/scrapper";
 import Link from "next/link";
-const maxDuration = 35; // This function can run for a maximum of 5 seconds
-export const dynamic = "force-dynamic";
 
 type Props = {
   searchParams: SearchParams;

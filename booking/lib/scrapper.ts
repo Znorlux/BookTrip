@@ -1,5 +1,7 @@
 import { SearchParams } from "@/app/travel-search/page";
 import { Result } from "@/typings";
+export const maxDuration = 35; // 5 seconds
+export const dynamic = "force-dynamic";
 
 export async function scrapper(searchParams: SearchParams) {
   const username = process.env.OXYLABS_USERNAME;
