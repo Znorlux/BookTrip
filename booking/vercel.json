@@ -2,6 +2,9 @@
   "functions": {
     "app/api/**/*": {
       "maxDuration": 35
+    },
+    "lib/scrapper.ts": {
+      "maxDuration": 35
     }
   }
 }
