@@ -3,7 +3,7 @@
     "app/api/**/*": {
       "maxDuration": 35
     },
-    "lib/scrapper.ts": {
+    "/lib/scrapper.ts": {
       "maxDuration": 35
     }
   }
