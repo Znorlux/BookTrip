@@ -107,8 +107,10 @@ function SearchForm({
   }, [form, selectedFlight]);
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const checkin_monthday = "0" + values.dates.from.getDate().toString();
-    const checkin_month = "0" + (values.dates.from.getMonth() + 1).toString();
+    const day = values.dates.from.getDate().toString();
+    const checkin_monthday = day.padStart(2, "0");
+    const month = (values.dates.from.getMonth() + 1).toString();
+    const checkin_month = month.padStart(2, "0");
     const checkin_year = values.dates.from.getFullYear().toString();
     const checkout_monthday = values.dates.to.getDate().toString();
     const checkout_month = (values.dates.to.getMonth() + 1).toString();
@@ -121,6 +123,7 @@ function SearchForm({
     const checkin = `${checkin_year}-${checkin_month}-${checkin_monthday}`;
     const checkout = `${checkout_year}-${checkout_month}-${checkout_monthday}`;
     const passengers = `${parseInt(values.adults) + parseInt(values.children)}`;
+    console.log(checkin);
 
     try {
       router.push(

@@ -19,22 +19,38 @@ export type flightParams = {
 async function SearchPage({ searchParams }: Props) {
   if (!searchParams.origin) return notFound();
 
-  const results = await fetch(
-    `http://localhost:3000/api/flight/search?origin=${searchParams.origin}&destination=${searchParams.destination}&departureDate=${searchParams.departureDate}&passengers=${searchParams.passengers}`
-  );
+  let results;
+  try {
+    results = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/flight/search?origin=${searchParams.origin}&destination=${searchParams.destination}&departureDate=${searchParams.departureDate}&passengers=${searchParams.passengers}`
+    );
+  } catch (error) {
+    console.error("Error fetching flight data:", error);
+    return <div>Error fetching flight data</div>;
+  }
+
+  if (!results.ok) {
+    console.error("Failed to fetch flight data:", results.statusText);
+    return <div>Failed to fetch flight data</div>;
+  }
 
   let data = await results.json();
 
   if (data.length === 0) {
     console.log("No results found");
-    data = await new_flight(
-      searchParams.locationIATA,
-      searchParams.destinationIATA,
-      searchParams.departureDate
-    );
-    console.log(data);
-    if (data) {
-      data = [data]; // Convertir el objeto en un array para renderizar
+    try {
+      data = await new_flight(
+        searchParams.locationIATA,
+        searchParams.destinationIATA,
+        searchParams.departureDate
+      );
+      console.log(data);
+      if (data) {
+        data = [data]; // Convertir el objeto en un array para renderizar
+      }
+    } catch (error) {
+      console.error("Error fetching new flight data:", error);
+      return <div>Error fetching new flight data</div>;
     }
   }
 
