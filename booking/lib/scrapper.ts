@@ -1,5 +1,6 @@
 import { SearchParams } from "@/app/travel-search/page";
 import { Result } from "@/typings";
+export const maxDuration = 35; // This function can run for a maximum of 5 seconds
 
 export async function scrapper(searchParams: SearchParams) {
   const username = process.env.OXYLABS_USERNAME;

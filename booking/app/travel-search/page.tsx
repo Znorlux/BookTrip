@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Header from "../components/Header";
 import { scrapper } from "@/lib/scrapper";
 import Link from "next/link";
+export const dynamic = "force-dynamic";
+
 type Props = {
   searchParams: SearchParams;
 };
