@@ -67,7 +67,7 @@ function AirportAutocomplete({ label, placeholder, onAirportSelected }: Items) {
 
           // Hacer una petición a la API para obtener el código IATA
           const response = await fetch(
-            `http://iatageo.com/getCode/${lat}/${lng}`
+            `https://iatageo.com/getCode/${lat}/${lng}`
           );
           const data = await response.json();
           const iataCode = data.IATA || "";
