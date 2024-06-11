@@ -21,7 +21,7 @@ async function SearchPage({ searchParams }: Props) {
   //  `localhost:3000/api/car/search?origin=${searchParams.location}&brand=${searchParams.brand}`
   //);
   const results = await fetch(
-    `http://localhost:3000/api/car/search?origin=${searchParams.location}&brand=${searchParams.brand}`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/car/search?origin=${searchParams.location}&brand=${searchParams.brand}`
   );
 
   const data = await results.json();
