@@ -1,8 +1,5 @@
 {
   "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 30
-    },
     "lib/scrapper.ts": {
       "maxDuration": 30
     }
